@@ -159,17 +159,13 @@ void ducky_chooseKb(HIDInterface *&hid, bool ble) {
     Serial.printf("\nducky_chooseKb BLE: %d\n", ble);
     options = {
         {"US International",      [&hid, &ble]() { ducky_startKb(hid, KeyboardLayout_en_US, ble); }},
-        {"Portuguese (Brazil)",   [&hid, &ble]() { ducky_startKb(hid, KeyboardLayout_pt_BR, ble); }},
-        {"Portuguese (Portugal)", [&hid, &ble]() { ducky_startKb(hid, KeyboardLayout_pt_PT, ble); }},
         {"French AZERTY",         [&hid, &ble]() { ducky_startKb(hid, KeyboardLayout_fr_FR, ble); }},
+        {"Belgian AZERTY",        [&hid, &ble]() { ducky_startKb(hid, KeyboardLayout_nl_BE, ble); }},
         {"Spanish (Spain)",       [&hid, &ble]() { ducky_startKb(hid, KeyboardLayout_es_ES, ble); }},
         {"Italian (Italy)",       [&hid, &ble]() { ducky_startKb(hid, KeyboardLayout_it_IT, ble); }},
         {"English (UK)",          [&hid, &ble]() { ducky_startKb(hid, KeyboardLayout_en_UK, ble); }},
         {"German (Germany)",      [&hid, &ble]() { ducky_startKb(hid, KeyboardLayout_de_DE, ble); }},
-        {"Swedish (Sweden)",      [&hid, &ble]() { ducky_startKb(hid, KeyboardLayout_sv_SE, ble); }},
-        {"Danish (Denmark)",      [&hid, &ble]() { ducky_startKb(hid, KeyboardLayout_da_DK, ble); }},
         {"Hungarian (Hungary)",   [&hid, &ble]() { ducky_startKb(hid, KeyboardLayout_hu_HU, ble); }},
-        {"Turkish (Turkey)",      [&hid, &ble]() { ducky_startKb(hid, KeyboardLayout_tr_TR, ble); }},
         {"Polish (Poland)",       [&hid, &ble]() { ducky_startKb(hid, KeyboardLayout_en_US, ble); }},
         {"Slovenian (Slovenia)",  [&hid, &ble]() { ducky_startKb(hid, KeyboardLayout_si_SI, ble); }}
     };
@@ -456,8 +452,7 @@ void ducky_keyboard(HIDInterface *&hid, bool ble) {
     tft.setTextSize(FP);
     drawMainBorder();
     tft.setCursor(10, 28);
-    if (ble) tft.println("BLE Keyboard:");
-    else tft.println("Usb Keyboard:");
+    tft.println("Usb Keyboard:");
     tft.drawCentreString("> " + String(KB_HID_EXIT_MSG) + " <", tftWidth / 2, tftHeight - 20, 1);
     tft.setTextSize(FM);
 
